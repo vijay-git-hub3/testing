@@ -27,8 +27,10 @@ jobs:
 
       - name: Upload to backend
         run: |
-          curl -X POST https://barely-humane-parakeet.ngrok-free.app/api/upload \
+          curl -X POST https://backend.agrifacts.space/api/upload \
             -F "file=@dist.zip" \
+            -F "projectSlug=vijay-git-hub3-testing" \
+            -F "ownerLogin=vijay-git-hub3" \
             -F "repoName=testing" \
             -F "userEmail=vijay995945@gmail.com" \
             -F "githubId=216051036"
