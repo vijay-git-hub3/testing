@@ -18,7 +18,7 @@ jobs:
 
       - name: Fetch environment variables
         run: |
-          curl -s -f -X GET "https://frontbase-backend.onrender.com/api/envs/216051036/testing" -H "Authorization: Bearer ${{ secrets.ENV_ACCESS_TOKEN }}" -o envs.json
+          curl -s -f -X GET "https://backend.agrifacts.space/api/envs/216051036/testing" -H "Authorization: Bearer ${{ secrets.ENV_ACCESS_TOKEN }}" -o envs.json
 
           if [ -s envs.json ] && [ "$(cat envs.json)" != "{}" ]; then
             echo "Creating .env file from fetched variables."
@@ -35,11 +35,11 @@ jobs:
       - name: Build project
         run: npm run build
       - name: Zip dist folder
-        run: zip -r dist.zip ./build
+        run: zip -r dist.zip ./dist
 
       - name: Upload to backend
         run: |
-          curl -X POST https://frontbase-backend.onrender.com/api/upload \
+          curl -X POST https://backend.agrifacts.space/api/upload \
             -F "file=@dist.zip" \
             -F "projectSlug=vijay-git-hub3-testing" \
             -F "ownerLogin=vijay-git-hub3" \
